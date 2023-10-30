@@ -1,0 +1,5 @@
+SQLAlchemy==1.4.45
+pandas==1.4.4
+Flask==2.3.3
+duckdb==0.8.1
+clickhouse-driver==0.2.5
