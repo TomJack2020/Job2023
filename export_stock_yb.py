@@ -31,7 +31,7 @@ def get_stock(warehouse_id_tuple, n):
     when toInt32(warehouse_id) = 481 then '海外虚拟仓_虎门'
     end as ss
     FROM yb_datacenter.yb_stock a
-    WHERE warehouse_id in{warehouse_id_tuple} AND sync_time > toDate(now()) AND a.stock >= {n} limit 10
+    WHERE warehouse_id in{warehouse_id_tuple} AND sync_time > toDate(now()) AND a.stock >= {n}
     """
     con = Client(host=host_ck, port=9001, user=username_ck, password=password_ck,database=database_ck,send_receive_timeout=3000)
     data = con.execute(sql)
@@ -56,8 +56,11 @@ create_date = str(datetime.datetime.now())[:10]
 df = get_stock((340,325,478,653,35, 88), 1)
 print(df)
 
-# # 数据存储到本地
-# # df.to_excel(fr'C:\\Users\\Administrator\\Desktop\\{create_date}_stock.xlsx',index=False, engine='xlsxwriter')
+# 数据存储到本地
+folder = "/mnt/c/Users/Administrator/Desktop/"
+save_path = os.path.join(folder, f"{create_date}_stock.xlsx")
+# print(save_path)
+df.to_excel(save_path,index=False, engine='xlsxwriter')
 
 
 
