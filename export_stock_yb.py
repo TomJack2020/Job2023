@@ -4,9 +4,6 @@
 @Time    :   2023/10/30 09:27:59
 @Author  :   cep 
 '''
-
-
-
 import sys
 import os
 from tools.config import * 
@@ -40,14 +37,14 @@ def get_stock(warehouse_id_tuple, n):
     return df
 
 
-# """
-# 478 小包仓虎门
-# 340 谷仓法国仓
-# 325 谷仓捷克仓
-# 653 谷仓德国仓
-#  35 万邑通德国仓
-#  88 谷仓英国仓
-# """
+"""
+478 小包仓虎门
+340 谷仓法国仓
+325 谷仓捷克仓
+653 谷仓德国仓
+ 35 万邑通德国仓
+ 88 谷仓英国仓
+"""
 
 
 create_date = str(datetime.datetime.now())[:10]
@@ -60,6 +57,7 @@ print(df)
 folder = "/mnt/c/Users/Administrator/Desktop/"
 save_path = os.path.join(folder, f"{create_date}_stock.xlsx")
 # print(save_path)
+
 df.to_excel(save_path,index=False, engine='xlsxwriter')
 
 
